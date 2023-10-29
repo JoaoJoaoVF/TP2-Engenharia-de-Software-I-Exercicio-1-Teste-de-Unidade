@@ -1,3 +1,4 @@
+
 /**
 * Engenharia de Software Moderna - Testes  (Cap. 8)
 * Prof. Marco Tulio Valente
@@ -25,21 +26,38 @@ public class TesteShoppingCart {
 
   @Test
   public void testAddItem() {
-    // Escreva aqui seu código de teste
+    shoppingCart.addItem(new Item("BNV", 95.0));
+    int wasAdded = shoppingCart.getItemCount();
+    System.out.println("wasAdded: " + wasAdded);
+    assertTrue(wasAdded == 3);
   }
 
   @Test
   public void testRemoveItem() {
-    // Escreva aqui seu código de teste
+    Item itemToRemove = new Item("BNV", 95.0);
+    shoppingCart.removeItem(itemToRemove);
+    int wasRemoved = shoppingCart.getItemCount();
+    System.out.println("wasRemoved: " + wasRemoved);
+    assertTrue(wasRemoved == 2);
   }
 
   @Test
   public void testGetTotalPrice() {
-    // Escreva aqui seu código de teste
+    shoppingCart.addItem(new Item("BNV", 95.0));
+    double totalPrice = shoppingCart.getTotalPrice();
+    System.out.println("totalPrice: " + totalPrice);
+    assertTrue(totalPrice == 280.0);
   }
 
   @Test
   public void testClearCart() {
-    // Escreva aqui seu código de teste
+    shoppingCart.addItem(new Item("BNV", 95.0));
+    shoppingCart.addItem(new Item("DUB", 20.0));
+    int sizeCartBefore = shoppingCart.getItemCount();
+    System.out.println("sizeCartBefore: " + sizeCartBefore);
+    shoppingCart.clearCart();
+    int wasCleared = shoppingCart.getItemCount();
+    System.out.println("wasCleared: " + wasCleared);
+    assertTrue(wasCleared == 0);
   }
 }
